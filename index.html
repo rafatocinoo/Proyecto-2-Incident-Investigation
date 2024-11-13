@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Informe Forense - Investigación de Incidentes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Encabezado Principal -->
+    <header>
+        <h1 id="incident-investigation">Incident Investigation</h1>
+    </header>
+
+    <!-- Introducción -->
+    <section id="introducción">
+        <h2>Introducción</h2>
+        <p>Este informe presenta un análisis detallado de la adquisición forense realizada sobre una máquina virtual comprometida, simulando un incidente de ciberseguridad. El objetivo de este ejercicio es documentar paso a paso el proceso de recolección y almacenamiento de evidencia digital, aplicando las mejores prácticas en investigación forense y asegurando la integridad de las evidencias recolectadas.</p>
+        <p>A continuación, se detallan las fases de recolección y almacenamiento de evidencia, junto con el análisis técnico de los hallazgos derivados del proceso.</p>
+    </section>
+
+    <!-- Recolección y Almacenamiento de Evidencias -->
+    <section id="recolección-y-almacenamiento-de-evidencias">
+        <h2>Recolección y Almacenamiento de Evidencias</h2>
+        <p>La recolección de evidencia digital en un entorno de máquina virtual comprometida se ha realizado según la metodología estándar de nuestra empresa, que asegura la integridad y validez de la información capturada.</p>
+        <p>Contamos con la autorización previa de los responsables para acceder y manipular la máquina virtual.</p>
+        <p>Seguimos el orden de volatilidad según la norma ISO/IEC 27037.</p>
+        <p>Para dar inicio al proceso de adquisición forense, se procedió a la documentación exhaustiva de los detalles básicos y la configuración de la máquina virtual comprometida.</p>
+
+        <!-- Registro de fecha y hora -->
+        <h3>Registro de fecha y hora</h3>
+        <p>Fecha de documentación inicial: 12/11/2024</p>
+        <p>Hora de documentación inicial: 12:19</p>
+        <p>Este registro se realizó siguiendo la normativa de sincronización de tiempo para garantizar la precisión en el cronograma del incidente.</p>
+
+        <!-- Ubicación de la máquina virtual -->
+        <h3>Ubicación de la Máquina Virtual en el Entorno Virtual</h3>
+        <p>Entorno virtual: VMware.</p>
+        <p>Ubicación de la Máquina Virtual: La máquina en cuestión está virtualizada en mi dispositivo personal.</p>
+
+        <!-- Propiedades y configuración de la máquina virtual -->
+        <h3>Propiedades y Configuración de la Máquina Virtual</h3>
+        <p>A continuación, se documentan las propiedades esenciales de la VM comprometida, lo cual será útil para comprender sus características operativas y el contexto de la intrusión.</p>
+        <p>Nombre de la Máquina Virtual: FORENSIC_10</p>
+        <p>Sistema Operativo: Windows 7 Professional</p>
+        <p>Dirección IP Asignada: 10.28.0.25</p>
+        <p>Configuración de Red: 255.255.255.0</p>
+        <p>Recursos Asignados: Procesador: 1 núcleo, Memoria RAM: 2Gb, Almacenamiento: 32Gb</p>
+    </section>
+
+    <!-- Identificación y clasificación de evidencias -->
+    <section id="identificación-y-clasificación-de-evidencias">
+        <h2>Identificación y Clasificación de Evidencias</h2>
+        <p>Para realizar una adquisición forense adecuada de la máquina virtual comprometida, se han identificado y clasificado las evidencias digitales siguiendo la jerarquía de volatilidad. Esto permite recolectar primero los datos más volátiles, asegurando su preservación antes de que puedan ser alterados o eliminados.</p>
+
+        <!-- Memoria Volátil -->
+        <h3 id="memoria-volátil">Memoria Volátil</h3>
+        <p>Para empezar capturaremos la memoria RAM con la herramienta FTK Imager, volcaremos la memoria RAM al completo.</p>
+        <figure>
+            <img src="img/ram.png" alt="Captura de RAM" />
+            <figcaption>Captura de Memoria RAM</figcaption>
+        </figure>
+        <p>Detalles de la evidencia:</p>
+        <ol>
+            <li>Ruta de la evidencia: Ubicación física: Módulo de memoria RAM insertado en la placa base. Ruta del sistema: RAM.</li>
+            <li>Hash no alterado: Algoritmo utilizado: SHA1 y MD5. Valor hash: SHA1.- 98054950586f3f281d050615377ce30b44ecda63, MD5.- 64c9223ad659dda58e1b1115161c4cca</li>
+            <li>Mtime (Tiempo de modificación): Fecha: 12/11/2024 Hora: 12:59:23</li>
+            <li>Descripción breve de la evidencia: Módulo de memoria RAM de tipo DDR4, con capacidad de 1GB, utilizado para el almacenamiento temporal de datos en el sistema investigado.</li>
+        </ol>
+
+        <!-- Acta de Adquisición Forense -->
+        <h4>ACTA DE ADQUISICIÓN FORENSE</h4>
+        <p>Número de caso: 001</p>
+        <p>Fecha: 12/11/2024</p>
+        <p>Hora de inicio: 12:19</p>
+        <p>Lugar: San Fernando (Cádiz)</p>
+        <p>Investigador responsable: Rafael Tocino Batista</p>
+        <ol>
+            <li>Método de adquisición: Herramienta utilizada: AccessData_FTK_Imager_4.2.0. Tipo de adquisición: Memoria RAM completa.</li>
+            <li>Detalles de la evidencia adquirida: Nombre del archivo de imagen: memdump.mem. Tamaño del archivo: 1.073.741.824 bytes. Hash de la evidencia: SHA1.- 98054950586f3f281d050615377ce30b44ecda63, MD5.- 64c9223ad659dda58e1b1115161c4cca</li>
+        </ol>
+        <p>Firmas:</p>
+        <p>[Firma del perito]</p>
+        <p>[Firma del testigo]</p>
+
+        <!-- Captura de Cachés Específicos -->
+        <h4>Captura de Cachés Específicos</h4>
+
+        <!-- Tabla de Enrutamiento -->
+        <h5>Tabla de Enrutamiento</h5>
+        <p>Para identificar la tabla de enrutamiento hemos emitido el comando "route print" y lo hemos almacenado en un archivo .txt al cual posteriormente se le ha calculado el hash “SHA1 y MD5” para mantener la integridad.</p>
+        <figure>
+            <img src="img/tablaroute.png" alt="Tabla de enrutamiento" />
+            <figcaption>Tabla de Enrutamiento</figcaption>
+        </figure>
+        <p>Detalles de la evidencia:</p>
+        <ol>
+            <li>Ruta de la evidencia: Ubicación física: RAM. Ruta del sistema: Tabla de enrutamiento, RAM.</li>
+            <li>Hash no alterado: Algoritmo utilizado: SHA1 y MD5. Valor hash: SHA1.- 65d2bacc33701f9368f3ab50cc3775531117aecc, MD5.- c1a67a1e6d6f000675e6986700038c01</li>
+            <li>Mtime (Tiempo de modificación): Fecha: 12/11/2024 Hora: 13:06:00</li>
+            <li>Descripción breve de la evidencia: La evidencia corresponde a la tabla de enrutamiento activa del sistema, almacenada temporalmente en la memoria RAM.</li>
+        </ol>
+
+        <!-- Acta de Adquisición Forense para la Tabla de Enrutamiento -->
+        <h4>ACTA DE ADQUISICIÓN FORENSE</h4>
+        <p>Número de caso: 001</p>
+        <p>Fecha: 12/11/2024</p>
+        <p>Hora de inicio: 13:06:00</p>
+        <p>Lugar: San Fernando (Cádiz)</p>
+        <p>Investigador responsable: Rafael Tocino Batista</p>
+        <ol>
+            <li><strong>Método de adquisición:</strong> 
+                <ul>
+                    <li><strong>Herramienta utilizada:</strong> CMD</li>
+                    <li><strong>Tipo de adquisición:</strong> Tabla de enrutamiento activa completa</li>
+                </ul>
+            </li>
+            <li><strong>Detalles de la evidencia adquirida:</strong>
+                <ul>
+                    <li><strong>Nombre del archivo de imagen:</strong> TablaEnrutamiento.txt</li>
+                    <li><strong>Tamaño del archivo:</strong> 512 bytes</li>
+                    <li><strong>Hash de la evidencia:</strong>
+                        <ul>
+                            <li><strong>SHA1:</strong> 65d2bacc33701f9368f3ab50cc3775531117aecc</li>
+                            <li><strong>MD5:</strong> c1a67a1e6d6f000675e6986700038c01</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        
+        <p>Firmas:</p>
+        <p>[Firma del perito]</p>
+        <p>[Firma del testigo]</p>
+    </section>
+    <!-- Caché ARP -->
+    <section id="cache-arp">
+        <h3><strong>Caché ARP</strong></h3>
+        <p>En el caso del caché ARP hemos ejecutado el comando <code>arp -a</code> y este resultado lo hemos almacenado en un archivo .txt al cual posteriormente se le ha calculado el hash “SHA1 y MD5” para mantener la integridad.</p>
+        <figure>
+            <img src="img/arp.png" alt="Caché ARP" />
+            <figcaption aria-hidden="true">Caché ARP</figcaption>
+        </figure>
+        <p>Detalles de la evidencia:</p>
+        <ol>
+            <li>Ruta de la evidencia: Ubicación física: RAM. Ruta del sistema: tabla ARP, RAM.</li>
+            <li>Hash no alterado: Algoritmo utilizado: SHA1 y MD5. Valor hash: SHA1.- 13d1cdb410f43b74155514e2bda4146ade5ae432, MD5.- 4364c5630e812df3bb2966000d2d02d2</li>
+            <li>Mtime (Tiempo de modificación): Fecha: 12/11/2024, Hora: 13:12:18</li>
+            <li>Descripción breve de la evidencia: La tabla ARP (Address Resolution Protocol) es una estructura temporal en la memoria RAM que almacena asociaciones entre direcciones IP y direcciones MAC (Media Access Control) de dispositivos en la red local.</li>
+        </ol>
+        <h4>ACTA DE ADQUISICIÓN FORENSE</h4>
+        <p>Número de caso: 001</p>
+        <p>Fecha: 12/11/2024</p>
+        <p>Hora de inicio: 13:12:18</p>
+        <p>Lugar: San Fernando (Cádiz)</p>
+        <p>Investigador responsable: Rafael Tocino Batista</p>
+        <ol>
+            <li><strong>Método de adquisición:</strong> 
+                <ul>
+                    <li><strong>Herramienta utilizada:</strong> CMD</li>
+                    <li><strong>Tipo de adquisición:</strong> Tabla ARP activa completa</li>
+                </ul>
+            </li>
+            <li><strong>Detalles de la evidencia adquirida:</strong>
+                <ul>
+                    <li><strong>Nombre del archivo de imagen:</strong> ARP</li>
+                    <li><strong>Tamaño del archivo:</strong> 462 bytes</li>
+                    <li><strong>Hash de la evidencia:</strong>
+                        <ul>
+                            <li><strong>SHA1:</strong> 13d1cdb410f43b74155514e2bda4146ade5ae432</li>
+                            <li><strong>MD5:</strong> 4364c5630e812df3bb2966000d2d02d2</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        
+        <p>Firmas:</p>
+        <p>[Firma del perito]</p>
+        <p>[Firma del testigo]</p>
+    </section>
+
+    <!-- Triage del Sistema -->
+    <section id="triage-del-sistema">
+        <h3 id="triage-del-sistema">Triage del Sistema</h3>
+        <p>El triage inicial del sistema es una fase crítica en el análisis forense, ya que permite identificar rápidamente los elementos de interés que podrían contener información relevante para el caso antes de realizar una adquisición completa.</p>
+        <p>Este triage inicial se ha realizado con WinAudit e IRTriage-Master en el cual se realizó un análisis detallado de los procesos activos en el sistema en el momento de la adquisición. Los procesos con nombres inusuales, ubicaciones desconocidas o en rutas sospechosas fueron marcados para un análisis más profundo.</p>
+        <figure>
+            <img src="img/procesos.png" alt="WinAudit" />
+            <figcaption>WinAudit</figcaption>
+        </figure>
+        <figure>
+            <img src="img/triage.png" alt="IRTriage-Master" />
+            <figcaption>IRTriage-Master</figcaption>
+        </figure>
+        <p>También se revisaron las conexiones de red activas para identificar cualquier comunicación externa que pudiera comprometer la integridad del sistema o relacionarse con actividad malintencionada.</p>
+        <figure>
+            <img src="img/conexiones.png" alt="Conexiones de red" />
+            <figcaption>Conexiones de Red</figcaption>
+        </figure>
+        <p>La exploración de archivos recientes y modificados fue otra técnica clave en el triage inicial. Se identificaron archivos abiertos recientemente por el usuario o por aplicaciones del sistema en las siguientes ubicaciones:</p>
+        <ul>
+            <li>Documentos de usuario en la carpeta documentos.</li>
+            <li>Archivos de sistema de Windows, la carpeta System32.</li>
+            <li>Directorios temporales y de caché.</li>
+        </ul>
+        <p>Detalles de la evidencia:</p>
+        <ol>
+            <li>Ruta de la evidencia: Ubicación física: RAM. Ruta del sistema: Procesos, tabla ARP.</li>
+            <li>Hash no alterado: Algoritmo utilizado: SHA1 y MD5. Valor hash: SHA1.- 412e360319c6591f590f65906e06655059d45172, MD5.- 875594efe45e02b15df364016092bc0c</li>
+            <li>Mtime (Tiempo de modificación): Fecha: 13/11/2024, Hora: 8:33:33</li>
+            <li>Descripción breve de la evidencia: El triage de procesos es el proceso de priorizar y clasificar los procesos en ejecución para identificar rápidamente aquellos que podrían ser sospechosos o maliciosos, utilizado en análisis forenses y diagnósticos. Por otro lado, la tabla ARP almacena las asociaciones entre direcciones IP y MAC de dispositivos en la misma red local, facilitando la resolución de direcciones para la comunicación eficiente entre dispositivos en redes Ethernet.</li>
+        </ol>
+        <h4>ACTA DE ADQUISICIÓN FORENSE</h4>
+        <p>Número de caso: 001</p>
+        <p>Fecha: 12/11/2024</p>
+        <p>Hora de inicio: 13:12:18</p>
+        <p>Lugar: San Fernando (Cádiz)</p>
+        <p>Investigador responsable: Rafael Tocino Batista</p>
+        <ol>
+            <li><strong>Método de adquisición:</strong> 
+                <ul>
+                    <li><strong>Herramienta(s) utilizada(s):</strong> WinAudit e IRTriage-Master</li>
+                    <li><strong>Tipo de adquisición:</strong> Triage de los procesos y la tabla ARP</li>
+                </ul>
+            </li>
+            <li><strong>Detalles de la evidencia adquirida:</strong>
+                <ul>
+                    <li><strong>Nombre del archivo de imagen:</strong> TRIAGE</li>
+                    <li><strong>Tamaño del archivo:</strong> 860.160 bytes</li>
+                    <li><strong>Hash de la evidencia:</strong>
+                        <ul>
+                            <li><strong>SHA1:</strong> 412e360319c6591f590f65906e06655059d45172</li>
+                            <li><strong>MD5:</strong> 875594efe45e02b15df364016092bc0c</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        
+        <p>Firmas:</p>
+        <p>[Firma del perito]</p>
+        <p>[Firma del testigo]</p>
+    </section>
+    <!-- Memoria no volátil -->
+    <section id="memoria-no-volátil">
+        <h3 id="memoria-no-volátil">Memoria no volátil</h3>
+        <p>La adquisición de la memoria no volátil en el sistema incluyó la creación de una imagen forense completa del disco duro para asegurar una copia exacta y verificable de todos los datos almacenados. El proceso de creación de esta imagen se realizó utilizando FTK Imager, siguiendo estándares de preservación y custodia de evidencias digitales.</p>
+        <p>Para la adquisición del disco, se seleccionó el formato de imagen E01.</p>
+        <p>Se generaron hashes MD5 y SHA-1 tanto al inicio como al final de la adquisición, para verificar la integridad y autenticidad de la imagen forense creada. Estos hashes fueron documentados y posteriormente verificados para asegurar que la imagen es una copia fiel del disco original.</p>
+        <p>La adquisición se realizó en un entorno controlado, donde el disco duro fue conectado a una estación de trabajo forense utilizando un bloqueador de escritura.</p>
+        <p>Al concluir el proceso de adquisición, FTK Imager generó los hashes MD5 y SHA-1 de la imagen final, los cuales fueron comparados con los generados al inicio del proceso para confirmar la integridad de la imagen.</p>
+        <figure>
+            <img src="img/disco.png" alt="Disco duro" />
+            <figcaption aria-hidden="true">Disco duro del sistema</figcaption>
+        </figure>
+        <p>Detalles de la evidencia:</p>
+        <ol>
+            <li>Ruta de la evidencia: Ubicación física: Disco duro del sistema. Ruta del sistema: (C:)</li>
+            <li>Hash no alterado: Algoritmo utilizado: SHA1 y MD5. Valor hash: SHA1.- de440aea747c908cc6c4e5c77746ad4733c72208, MD5.- 69ee3caf346a8e816725c62fa26cd914</li>
+            <li>Mtime (Tiempo de modificación): Fecha: 13/11/2024, Hora: 20:44:19</li>
+            <li>Descripción breve de la evidencia: El disco duro de 30 GB del sistema contiene el sistema operativo, aplicaciones instaladas, archivos del usuario y registros del sistema.</li>
+        </ol>
+        <h4>ACTA DE ADQUISICIÓN FORENSE</h4>
+        <p>Número de caso: 001</p>
+        <p>Fecha: 12/11/2024</p>
+        <p>Hora de inicio: 20:44:19</p>
+        <p>Lugar: San Fernando (Cádiz)</p>
+        <p>Investigador responsable: Rafael Tocino Batista</p>
+        <ol>
+            <li><strong>Método de adquisición:</strong> 
+                <ul>
+                    <li><strong>Herramienta utilizada:</strong> AccessData_FTK_Imager_4.2.0</li>
+                    <li><strong>Tipo de adquisición:</strong> Clonación física del disco completo</li>
+                </ul>
+            </li>
+            <li><strong>Detalles de la evidencia adquirida:</strong>
+                <ul>
+                    <li><strong>Nombre del archivo de imagen:</strong> disco.E01, disco.E02, disco.E03, disco.E04</li>
+                    <li><strong>Tamaño del archivo:</strong> 1.572.745.092 bytes, 1.572.786.181 bytes, 1.572.706.515 bytes, 836.321.280 bytes</li>
+                    <li><strong>Hash de la evidencia:</strong>
+                        <ul>
+                            <li><strong>SHA1:</strong> de440aea747c908cc6c4e5c77746ad4733c72208</li>
+                            <li><strong>MD5:</strong> 69ee3caf346a8e816725c62fa26cd914</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>Firmas:</p>
+        <p>[Firma del perito]</p>
+        <p>[Firma del testigo]</p>
+    </section>
+
+    <!-- Conclusión -->
+    <section id="conclusión">
+        <h2>Conclusión</h2>
+        <p>En este informe, se ha detallado el proceso de adquisición forense de una máquina virtual comprometida, siguiendo las mejores prácticas y metodologías estándar en la investigación de incidentes de ciberseguridad. A través de la aplicación de la jerarquía de volatilidad, se logró garantizar la preservación e integridad de las evidencias más críticas, comenzando por la memoria volátil y avanzando hacia la captura de datos no volátiles, como la imagen del disco duro.</p>
+        <p>La utilización de herramientas como FTK Imager y WinAudit permitió una documentación meticulosa de cada paso, asegurando la trazabilidad y autenticidad de las evidencias. El análisis forense realizado ha establecido una base sólida para futuras investigaciones y posibles acciones legales, demostrando la eficacia del proceso de adquisición y análisis en la resolución de incidentes de seguridad digital.</p>
+    </section>
+
+    <section id="repositorio">
+        <h2>Repositorio de Evidencias</h2>
+        <p>Para más detalles y acceso a todas las evidencias adquiridas en este proceso forense, se puede consultar el repositorio a continuación:</p>
+        <p><a href="https://drive.google.com/drive/folders/1TJ8Gb86htRix4ccSp4VMClpUkemHj-Lf?usp=sharing" target="_blank">Repositorio de evidencias</a></p>
+        <p>Este repositorio contiene todos los archivos relacionados con la investigación forense, incluyendo imágenes de la memoria, la tabla de enrutamiento y caché ARP.</p>
+    </section>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Investigaciones Forenses Rafael Tocino SA, Todos los derechos reservados.</p>
+    </footer>
+    
+</body>
+</html>
+
+
+
